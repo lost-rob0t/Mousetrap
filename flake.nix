@@ -18,19 +18,21 @@
           src = fetchgit {
             url = "https://github.com/gholken/Mousetrap";
             rev = "9299933ea0cbaf39b36c6bfd3498474541884211";
-            sha256 = "";
+            sha256 = "sha256-NWD3q/f9RvXneeFTEt3IBCM9iQD+qY3gq91yL974uq4=";
           };
           nativeBuildInputs = [
-            cmake
             pkg-config
             xorg.libX11
             xorg.libXfixes
+          ];
+          buildInputs = [
             libnotify
           ];
           buildPhase = "make -j $NIX_BUILD_CORES";
           installPhase = ''
-            mkdir -p $out/bin
-            mv $TMP/mousetrap $out/bin
+          mkdir --parents "$out/bin"
+
+          cp ./mousetrap "$out/bin"
           '';
         }
       );
