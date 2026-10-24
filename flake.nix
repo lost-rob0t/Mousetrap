@@ -37,6 +37,10 @@
         }
       );
     in rec {
+      packages = {
+        default = mousetrap;
+        inherit mousetrap;
+      };
       defaultApp = flake-utils.lib.mkApp {
         drv = defaultPackage;
       };
